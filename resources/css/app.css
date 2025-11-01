@@ -1,3 +1,11 @@
+@import './custom.css';
+@import './onboarding.css';
+@import './buttons.css';
+@import "./components/sidebar.css";
+@import "./components/nav.css";
+@import "./components/form.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
