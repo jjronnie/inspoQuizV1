@@ -1,6 +1,6 @@
 <!-- Right: Banner -->
 <div class="hidden flex-col w-full px-5 py-24 text-center relative justify-center items-center lg:flex lg:w-2/3" style="
-        background-image: url('{{ asset("assets/img/banner.png") }}'); background-size: cover; background-position:
+        background-image: url('{{ asset("assets/img/banner.webp") }}'); background-size: cover; background-position:
   center; "
     >
       <!-- Overlay -->

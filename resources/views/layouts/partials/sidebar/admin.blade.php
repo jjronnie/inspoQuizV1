@@ -40,8 +40,8 @@
 
 
                 <a href="#" class="sidebar-link">
-                    <i data-lucide="bar-chart-3" class="w-4 h-4 text-white"></i>
-                    <span>Statistics</span>
+                    <i data-lucide="question-mark" class="w-4 h-4 text-white"></i>
+                    <span>Quiz</span>
                 </a>
 
 
@@ -53,7 +53,7 @@
                 </a> --}}
 
 
-               
+
 
 
 
