@@ -10,6 +10,7 @@ use App\Models\Answer;   // Imported Answer Model
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use Illuminate\View\View;
 
 
 
@@ -229,4 +230,23 @@ class QuizController extends Controller
         return redirect()->route('admin.quizzes.show', $quiz)
             ->with('success', 'Question deleted successfully.');
     }
+
+
+    public function attempt(Quiz $quiz): View
+{
+    // Fetch the questions associated with the quiz, including their answers.
+    // Eager load the 'answers' relationship.
+    // Use the `inRandomOrder()` for a fresh quiz experience each time.
+    $questions = $quiz->questions()
+                      ->with(['answers' => function ($query) {
+                          $query->inRandomOrder(); // Shuffle the answers for each question
+                      }])
+                      ->inRandomOrder() // Shuffle the questions
+                      ->get();
+
+    return view('admin.quizzes.attempt', [
+        'quiz' => $quiz,
+        'questions' => $questions,
+    ]);
+}
 }

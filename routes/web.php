@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuizController;
+use App\Http\Controllers\QuestionController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -27,18 +28,14 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
     // 1. Resource routes for Quiz CRUD (index, create, store, show, edit, update, destroy)
     Route::resource('quizzes', QuizController::class);
 
-    // 2. Custom routes for Question management (nested under a specific Quiz)
-    // POST to store a new question and its answers
-    Route::post('quizzes/{quiz}/questions', [QuizController::class, 'storeQuestion'])
-        ->name('quizzes.questions.store');
+   
+  Route::get('/quizzes/{quiz}/attempt', [QuizController::class, 'attempt'])->name('quizzes.attempt');
 
-    // PUT/PATCH to update an existing question and its answers
-    Route::put('quizzes/{quiz}/questions/{question}', [QuizController::class, 'updateQuestion'])
-        ->name('quizzes.questions.update');
-        
-    // DELETE to remove a question and its associated answers
-    Route::delete('quizzes/{quiz}/questions/{question}', [QuizController::class, 'destroyQuestion'])
-        ->name('quizzes.questions.destroy');
+
+         Route::resource('quizzes.questions', QuestionController::class)
+        ->except(['index', 'show']); // We don't need index/show for questions
+        // Note: The controller implies nested routes (e.g., /quizzes/{quiz}/questions/{question}/edit)
+        // so we don't need shallow()
 });
 
 
