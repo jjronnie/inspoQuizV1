@@ -5,16 +5,20 @@
         <div class="w-full lg:w-1/3 flex flex-col justify-center px-6 py-12 sm:px-10">
             <div class="w-full max-w-md mx-auto ">
                 <div class="lg:hidden mb-2 mx-auto flex items-center justify-center">
-                    <x-logo />
+                     <x-logo class="w-24 h-24" />
                 </div>
                    <div class="text-center">
 
                 <h1 class="font-bold mb-3  text-xl">Create Account</h1>
 
+                   <!-- Google Sign In Button -->
+
+          @include('auth.google-button')
+
                
 
-                <p class="mb-6  text-sm">
-                    Enter your credentials to create a free account and stand <span class="text-yellow-500 font-bold"> a chance to win Prizes </span> Terms and Conditions Apply
+                   <p class="mb-6  text-sm">
+                    Enter your credentials to create a free account and stand  a chance to win Prizes <span class="text-yellow-500 font-bold"> Terms and Conditions Apply</span>
                 </p>
                    </div>
 
@@ -29,7 +33,7 @@
                 <form method="POST" action="{{ route('register') }}" class="space-y-4">
                     @csrf
 
-                 
+                    
 
 
                     <!--  Name -->
@@ -93,7 +97,8 @@
                         <label for="terms-and-conditions" class="text-sm text-gray-900">
                             I agree to the
                             <a href="/terms-and-conditions" class="text-yellow-600 hover:underline">
-                                Terms and Conditions of {{ config('app.name') }}
+                               Terms and Conditions of {{ config('app.name') }}
+
                             </a>
                         </label>
                     </div>
@@ -105,7 +110,7 @@
                     </button>
                 </form>
 
-                  @include('auth.google-button')
+               
 
             </div>
             <p class="text-sm mt-4 text-center">
@@ -114,6 +119,7 @@
                     <a href="{{ route('login') }}"> Login Here</a>
                 </span>
             </p>
+          
         </div>
 
         <!-- Right: Banner -->

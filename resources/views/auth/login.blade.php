@@ -6,10 +6,16 @@
     >
       <div class="w-full  mx-auto py-10 px-10 ">
         <div class="flex mb-2 mx-auto items-center justify-center lg:hidden">
-           <x-logo />
+           <x-logo class="w-24 h-24" />
+
         </div>
         <div class="text-center">
           <h1 class="mb-3 font-bold text-xl">Sign In to your account</h1>
+
+
+             <!-- Google Sign In Button -->
+
+          @include('auth.google-button')
 
         
        
@@ -117,9 +123,7 @@
           </button>
         </form>
 
-          <!-- Google Sign In Button -->
-
-          @include('auth.google-button')
+       
 
         <p class="mt-4 text-sm text-center">
           Dont have an Account?
@@ -127,6 +131,8 @@
             <a href="{{ route("register") }}">Register Here</a>
           </span>
         </p>
+
+      
       </div>
     </div>
 
