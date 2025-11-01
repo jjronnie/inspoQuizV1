@@ -17,9 +17,7 @@
 
             <i data-lucide="x" class="w-4 h-4 text-white"></i>
         </button>
-    </div>
-
-    <!-- Scrollable Navigation Area -->
+    </div>   
 
 
 
@@ -36,28 +34,12 @@
             <div class="space-y-1">
 
 
-
-
-
-                <a href="#" class="sidebar-link">
-                    <i data-lucide="question-mark" class="w-4 h-4 text-white"></i>
+                {{-- Users --}}
+                <a href="{{ route('admin.quizzes.index') }}"
+                    class="sidebar-link {{ request()->routeIs('admin.quizzes.*') ? 'sidebar-link-active' : '' }}">
+                    <i data-lucide="circle-question-mark" class="w-4 h-4 text-white"></i>
                     <span>Quiz</span>
                 </a>
-
-
-                {{-- Users --}}
-                {{-- <a href="{{ route('superadmin.users.index') }}"
-                    class="sidebar-link {{ request()->routeIs('superadmin.users.*') ? 'sidebar-link-active' : '' }}">
-                    <i data-lucide="users" class="w-4 h-4 text-white"></i>
-                    <span>Users</span>
-                </a> --}}
-
-
-
-
-
-
-
 
             </div>
     </div>

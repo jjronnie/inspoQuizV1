@@ -30,6 +30,7 @@
             </h2>
 
             <p class="mt-2 text-sm text-gray-600">{{ $warning }}</p>
+            
 
             <!-- Toggle Acknowledgment -->
             <div class="mt-4 flex items-center space-x-2">

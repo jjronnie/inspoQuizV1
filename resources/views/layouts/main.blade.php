@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="UTF-8">
@@ -7,7 +8,7 @@
     <meta name="robots" content="noindex, nofollow">
     <meta name="googlebot" content="noindex, nofollow">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    
+
 
 
     <title>
@@ -29,8 +30,8 @@
 
 
     <!-- Favicon -->
-    <link rel="icon" href="{{ asset('favv1.png') }}">
-    <link rel="apple-touch-icon" href="{{ asset('favv1.png') }}">
+    <link rel="icon" href="{{ asset('logo.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('logo.png') }}">
 
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#001529">
