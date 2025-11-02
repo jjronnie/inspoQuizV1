@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <x-page-title title="Edit Quiz: {{ $quiz->title }}" subtitle="Update the core properties of this quiz." />
+    <x-page-title title="Edit Quiz: {{ $quiz->title }}"  />
 
     <div class=" mx-auto bg-white p-6 md:p-8 shadow-xl rounded-lg border border-gray-100">
         
@@ -45,9 +45,9 @@
 
             <!-- Action Buttons -->
             <div class="flex items-center justify-end mt-4 pt-4 border-t border-gray-200">
-                <x-secondary-button href="{{ route('admin.quizzes.index') }}" class="mr-3">
+              <a  href="{{ route('admin.quizzes.index') }}" class=" btn-gray mr-3">
                     Cancel
-                </x-secondary-button>
+                </a>
 
                 <x-primary-button>
                     {{ __('Update Quiz') }}

@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <x-page-title title="Create New Quiz" subtitle="Define the core properties of the new quiz." />
+    <x-page-title title="Create New Quiz"  />
 
     <div class=" mx-auto bg-white p-6 md:p-8 shadow-xl rounded-lg border border-gray-100">
         
@@ -10,7 +10,7 @@
             <!-- Quiz Title -->
             <div class="mb-5">
                 <x-input-label for="title" :value="__('Quiz Title')" />
-                <x-text-input id="title" class="block mt-1 w-full" type="text" name="title" :value="old('title')" placeholder="e.g., Introduction to Laravel Development" required autofocus />
+                <x-text-input id="title" class="block mt-1 w-full" type="text" name="title" :value="old('title')"  required autofocus />
                 <x-input-error :messages="$errors->get('title')" class="mt-2" />
             </div>
 
@@ -27,7 +27,7 @@
                 <!-- Time Limit -->
                 <div class="mb-5">
                     <x-input-label for="time_limit_minutes" :value="__('Time Limit (Minutes)')" />
-                    <x-text-input id="time_limit_minutes" class="block mt-1 w-full" type="number" name="time_limit_minutes" :value="old('time_limit_minutes', 30)" required min="1" />
+                    <x-text-input id="time_limit_minutes" class="block mt-1 w-full" type="number" name="time_limit_minutes" :value="old('time_limit_minutes', 1)" required min="1" />
                     <x-input-error :messages="$errors->get('time_limit_minutes')" class="mt-2" />
                     <p class="text-xs text-gray-500 mt-1">The maximum time allowed for users to complete the quiz.</p>
                 </div>
@@ -44,9 +44,9 @@
 
             <!-- Action Buttons -->
             <div class="flex items-center justify-end mt-4 pt-4 border-t border-gray-200">
-                <x-secondary-button href="{{ route('admin.quizzes.index') }}" class="mr-3">
+                <a  href="{{ route('admin.quizzes.index') }}" class=" btn-gray mr-3">
                     Cancel
-                </x-secondary-button>
+                </a>
 
                 <x-primary-button>
                     {{ __('Create Quiz') }}

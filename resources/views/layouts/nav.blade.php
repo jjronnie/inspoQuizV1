@@ -27,7 +27,7 @@
                 <div class="p-4">
                     <h3 class="text-sm font-medium text-gray-900 mb-3">Quick Access</h3>
                     <div class="space-y-2">
-                        <a href="#" class="quick-access-item">
+                        {{-- <a href="#" class="quick-access-item">
                             <i data-lucide="user-plus" class="w-4 h-4"></i>
                             <span class="text-sm">Add Employee</span>
                         </a>
@@ -46,7 +46,7 @@
                         <a href="#" class="quick-access-item">
                             <i data-lucide="clipboard-pen-line" class="w-4 h-4"></i>
                             <span class="text-sm">Apply For Leave</span>
-                        </a>
+                        </a> --}}
 
                     </div>
                 </div>

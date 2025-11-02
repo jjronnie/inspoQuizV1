@@ -3,16 +3,18 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\FrontendController;
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
 
-Route::get('/dashboard', function () {
+
+ Route::get('/', [FrontendController::class, 'index'])->name('home');
+ Route::get('/quizzes/{quiz}/attempt', [FrontendController::class, 'attempt'])->name('attempt');
+
+ Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified', 'role:admin'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -23,13 +25,14 @@ Route::middleware('auth')->group(function () {
 
 
 
-Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->group(function () {
+Route::middleware(['auth', 'verified', 'role:admin'])->name('admin.')->prefix('admin')->group(function () {
     
+   
     // 1. Resource routes for Quiz CRUD (index, create, store, show, edit, update, destroy)
     Route::resource('quizzes', QuizController::class);
 
    
-  Route::get('/quizzes/{quiz}/attempt', [QuizController::class, 'attempt'])->name('quizzes.attempt');
+ 
 
 
          Route::resource('quizzes.questions', QuestionController::class)

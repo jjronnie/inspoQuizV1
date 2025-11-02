@@ -30,7 +30,7 @@ class QuizController extends Controller
     public function index()
     {
         // Fetch all quizzes, showing latest first
-        $quizzes = Quiz::latest()->with('creator')->paginate(10);
+        $quizzes = Quiz::latest()->with('creator')->paginate(500);
 
         return view('admin.quizzes.index', compact('quizzes'));
     }
@@ -58,7 +58,6 @@ class QuizController extends Controller
 
         $quiz = Quiz::create([
             'title' => $validated['title'],
-            'slug' => Str::slug($validated['title']) . '-' . time(), // Ensure unique slug
             'description' => $validated['description'],
             'time_limit_minutes' => $validated['time_limit_minutes'],
             'is_published' => $validated['is_published'] ?? false,
@@ -102,10 +101,7 @@ class QuizController extends Controller
             'is_published' => 'boolean',
         ]);
 
-        // Only update slug if the title changes significantly
-        if ($quiz->title !== $validated['title']) {
-            $validated['slug'] = Str::slug($validated['title']) . '-' . time();
-        }
+    
 
         $quiz->update($validated);
 
@@ -232,21 +228,5 @@ class QuizController extends Controller
     }
 
 
-    public function attempt(Quiz $quiz): View
-{
-    // Fetch the questions associated with the quiz, including their answers.
-    // Eager load the 'answers' relationship.
-    // Use the `inRandomOrder()` for a fresh quiz experience each time.
-    $questions = $quiz->questions()
-                      ->with(['answers' => function ($query) {
-                          $query->inRandomOrder(); // Shuffle the answers for each question
-                      }])
-                      ->inRandomOrder() // Shuffle the questions
-                      ->get();
 
-    return view('admin.quizzes.attempt', [
-        'quiz' => $quiz,
-        'questions' => $questions,
-    ]);
-}
 }

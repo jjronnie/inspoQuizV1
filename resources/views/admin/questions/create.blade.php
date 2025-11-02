@@ -12,7 +12,7 @@
 
     <div class="flex items-center justify-between mb-6">
         <h1 class="text-2xl font-bold">Add Question to: {{ $quiz->title }}</h1>
-        <a href="{{ route('admin.quizzes.show', $quiz) }}" class="text-indigo-600 hover:underline">Back to Questions</a>
+        <a href="{{ route('admin.quizzes.show', $quiz) }}" class="btn-gray">Back to Questions</a>
     </div>
 
     <div x-data="{
@@ -74,14 +74,14 @@
 
                 <!-- Add Answer -->
                 <button type="button" @click="addAnswer()"
-                    class="mt-2 px-4 py-2 bg-indigo-100 text-indigo-700 rounded hover:bg-indigo-200">
+                    class="btn-gray">
                     + Add Option
                 </button>
             </div>
 
             <!-- Submit -->
             <div class="pt-4 border-t border-gray-100">
-                <button type="submit" class="px-6 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">
+                <button type="submit" class="btn">
                     Save Question
                 </button>
             </div>

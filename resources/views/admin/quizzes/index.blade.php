@@ -32,8 +32,7 @@
         </div>
     </div>
 
-    <!-- Main Table -->
-    <div class="bg-white shadow-xl sm:rounded-lg overflow-hidden" x-data="{ openDeleteModal: false, deleteUrl: '' }">
+
         <x-table :headers="['#', 'Title', 'Status', 'Time Limit (Mins)', 'Created At', 'By']" showActions="true">
             @forelse ($quizzes as $quiz)
             <x-table.row>
@@ -82,21 +81,15 @@
                 </x-table.cell>
             </x-table.row>
             @empty
-            <x-table.row>
-                <x-table.cell colspan="7" class="text-center py-6 text-gray-500">
-                    No quizzes found. Click "New Quiz" to get started.
-                </x-table.cell>
-            </x-table.row>
+          
+            <x-empty-state message="No quizzes found." />
             @endforelse
         </x-table>
 
-        <!-- Pagination Links -->
-        <div class="p-4 bg-white border-t border-gray-200">
-            {{ $quizzes->links() }}
-        </div>
+    
 
 
 
-    </div>
+
 
 </x-app-layout>
